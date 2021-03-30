@@ -1,0 +1,78 @@
+<!--Main Body-->
+<main class="container">
+  <div class="row mx-1">
+    <div class="col">
+      <h1>Create New Incident</h1>
+      <br />
+    </div>
+    
+      <div class="form">
+        <form method="GET" action="/incidents" class="row mx-1">
+          <div class="form-group col-12 col-md-6">
+            <label for="title">Description *</label>
+            <textarea
+              class="form-control"
+              id="description"
+              name="description"
+              placeholder="Describe the incident"
+              rows="4"
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-group col-12 col-md-3 pt-1">
+            <label for="priority">Priority</label>
+            <select name="priority" id="priority">
+              <option value="HIGH">High</option>
+              <option value="MEDIUM" selected>Medium</option>
+              <option value="LOW">Low</option>
+            </select>
+          </div>
+
+          <div class="form-group col12 col-md-3 pt-1">
+            <label for="status">Status</label>
+            <select name="status" id="status">
+              <option value="NEW" selected>New</option>
+            </select>
+          </div>
+
+          <div class="form-group col-12 col-md-6">
+            <label for="customerInfo">Customer Information</label>
+            <input
+              type="text"
+              class="form-control"
+              id="customerInfo"
+              name="customerInfo"
+              placeholder="Type in the customer information"
+            />
+          </div>
+
+          <div class="form-group col-12 col-md-6">
+            <label for="narrative">Incident Narrative</label>
+            <input
+              type="text"
+              class="form-control"
+              id="narrative"
+              name="narrative"
+              placeholder="Type in the incident narrative"
+            />
+          </div>
+
+          <hr/>
+
+          <div class="form-group col-12 pt-3">
+            
+            <a href="/home" class="btn btn-secondary"
+              ><i class="fas fa-backward"></i> Back
+            </a>
+
+            <button type="submit" class="btn btn-success">
+              <i class="far fa-save"></i> Save
+            </button>
+
+          </div>
+        </form>
+      </div>
+    
+  </div>
+</main>
