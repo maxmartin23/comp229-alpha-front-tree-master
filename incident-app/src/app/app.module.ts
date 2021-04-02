@@ -10,6 +10,9 @@ import { IncidentFormComponent } from './incidents/incident-form/incident-form.c
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
+import { IncidentRepository } from './model/incident.repository';
+import { RestDataSource } from './model/rest.datasource';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,9 +27,14 @@ import { UserFormComponent } from './users/user-form/user-form.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    IncidentRepository,
+    RestDataSource,
+    HttpClient
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

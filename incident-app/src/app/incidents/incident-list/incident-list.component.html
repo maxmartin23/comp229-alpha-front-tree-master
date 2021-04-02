@@ -27,14 +27,14 @@
         </thead>
 
         <tbody>
-          <tr class="row no-gutters">
-            <td class="col text-center">12345-67890</td>
+          <tr class="row no-gutters" *ngFor = 'let incident of incidents'>
+            <td class="col text-center">{{incident.number}}</td>
             <td class="col-3 text-justify px-1 d-none d-md-block">
-              New incident description...
+              {{incident.description}}
             </td>
-            <td class="col text-center">HIGH</td>
-            <td class="col text-center">OPEN</td>
-            <td class="col text-center d-none d-md-block">2021-03-28</td>
+            <td class="col text-center">{{incident.priority}}</td>
+            <td class="col text-center">{{incident.status}}</td>
+            <td class="col text-center d-none d-md-block">{{incident.createDate}}</td>
             <td class="col text-center">
               <a href="#" class="btn btn-secondary">
                 <i class="fas fa-edit"></i>

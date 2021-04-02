@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Incident } from 'src/app/model/incident.model';
+import { IncidentRepository } from 'src/app/model/incident.repository';
+
 
 @Component({
   selector: 'app-incident-list',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IncidentListComponent implements OnInit {
 
-  constructor() { }
+  public incidents : Incident[] = [];
+  constructor(private incidentRepository : IncidentRepository) {}
 
   ngOnInit(): void {
+    this.incidents = this.incidentRepository.getIncidents();
+    console.log(this.incidents);
   }
 
 }
