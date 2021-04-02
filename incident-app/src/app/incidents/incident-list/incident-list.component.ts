@@ -10,12 +10,14 @@ import { IncidentRepository } from 'src/app/model/incident.repository';
 })
 export class IncidentListComponent implements OnInit {
 
-  public incidents : Incident[] = [];
-  constructor(private incidentRepository : IncidentRepository) {}
-
-  ngOnInit(): void {
-    this.incidents = this.incidentRepository.getIncidents();
-    console.log(this.incidents);
+  constructor(private incidentRepository : IncidentRepository) {
   }
+
+  get incidents() : Incident[]
+  {
+    return this.incidentRepository.getIncidents();
+  }
+
+  ngOnInit(): void {}
 
 }

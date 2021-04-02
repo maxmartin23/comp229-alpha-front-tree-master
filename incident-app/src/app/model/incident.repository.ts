@@ -6,13 +6,14 @@ import { RestDataSource } from './rest.datasource';
 export class IncidentRepository {
   private incidents: Incident[] = [];
 
-  constructor(private dataSource: RestDataSource) {}
+  constructor(private dataSource: RestDataSource) {
+    this.dataSource.getIncidents().subscribe(data => {
+      this.incidents = data;
+      console.log(this.incidents);
+    });
+  }
 
   getIncidents(): Incident[] {
-    this.dataSource.getIncidents().subscribe((data) => {
-      this.incidents = data;
-    });
-
     return this.incidents;
   }
 }
