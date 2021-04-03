@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserFormService } from './user-form.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-user-form',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userFormService: UserFormService, private route: ActivatedRoute,  private router: Router ) { }
+
+  username = ""
+  password = ""
+  email = ""
+  type = "regular"
+  loading = false
 
   ngOnInit(): void {
+  }
+
+  register = () => {
+    this.loading = true
+    this.userFormService.registerUser(this.username,this.password,this.email,this.type)
+    .subscribe((d)=>{
+      this.loading = false
+      this.router.navigate(['/home']);
+    })
   }
 
 }
