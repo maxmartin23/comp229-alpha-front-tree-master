@@ -7,7 +7,7 @@
       </div>
   
       <div class="form">
-        <form method="GET" action="/incidents" class="row mx-1">
+        <form class="row mx-1">
           <div class="form-group col-12">
             <label for="username">Username *</label>
             <input
@@ -15,6 +15,7 @@
               class="form-control"
               id="username"
               name="username"
+              [(ngModel)]="username"
               required
               placeholder="Type in your username"
             />
@@ -27,6 +28,7 @@
               class="form-control"
               id="password"
               name="password"
+              [(ngModel)]="password"
               required
               placeholder="Type in your password"
             />
@@ -39,6 +41,7 @@
               class="form-control"
               id="email"
               name="email"
+              [(ngModel)]="email"
               required
               placeholder="Type in your email"
             />
@@ -46,21 +49,26 @@
 
           <div class="form-group col12 col-md-3 pt-1">
             <label for="status">User Type</label>
-            <select name="status" id="status">
-              <option value="REGULAR" selected>Regular</option>
-              <option value="ADMIN" selected>Admin</option>
+            <select name="status" id="status" [(ngModel)]="type">
+              <option value="regular" selected>Regular</option>
+              <option value="admin" selected>Admin</option>
             </select>
           </div>
   
           <hr />
   
           <div class="form-group col-12 pt-3">
-            <a href="/home" class="btn btn-secondary"
-              ><i class="fas fa-backward"></i> Back
-            </a>
   
-            <button type="submit" class="btn btn-primary">
-              <i class="far fa-save"></i> Save
+            <button type="submit" class="btn btn-primary" (click)="register()">
+              <span *ngIf="!loading">
+                <i class="far fa-save"></i> Register
+              </span>
+              <span *ngIf="loading">
+                Registerning
+                <div class="spinner-border spinner-border-sm" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </span>
             </button>
           </div>
         </form>

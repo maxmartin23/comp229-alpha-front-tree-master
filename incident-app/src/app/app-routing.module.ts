@@ -12,7 +12,8 @@ const routes: Routes = [
   {path: 'incidents', component : IncidentListComponent},
   {path: 'users/register', component : UserFormComponent},
   {path: 'login', component : LoginComponent},
-  {path: 'logout', component : HomeComponent}
+  {path: 'logout', component : HomeComponent},
+  {path: '', redirectTo: '/login', pathMatch: 'full'}
 ];
 
 @NgModule({
