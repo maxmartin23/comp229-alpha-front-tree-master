@@ -12,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
 import { FormsModule } from '@angular/forms';
+import { IncidentRepository } from './model/incident.repository';
+import { RestDataSource } from './model/rest.datasource';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [IncidentRepository, RestDataSource],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
