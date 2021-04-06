@@ -21,13 +21,33 @@
           <a class="nav-link" href="/home">Home</a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item" *ngIf='isLoggedIn()'>
           <a class="nav-link" href="/incidents/create">New Incident</a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="/incidents">Incident Log</a>
+        <li class="nav-item" *ngIf='isLoggedIn()'>
+          <a class="nav-link" href="/incidents/incidentList">Incident Log</a>
         </li>
+
+        <li *ngIf='isLoggedIn()' class="nav-item ml-5 " [routerLinkActive]="['active']">
+          <a class="nav-link text-warning" routerLink="/admin/main"><i class="fas fa-lg fa-user-shield"></i> Admin </a>
+        </li>
+
+        <li *ngIf='isLoggedIn()'
+            class="navbar-text text-success ml-5 mr-5 d-none d-lg-inline">
+            <i class="fas fa-lg fa-user"></i> Welcome, {{ user?.username || "" }}
+        </li>
+
+
+        <li *ngIf='isLoggedIn()' class="nav-item">
+          <a (click)='onLogoutClick()' routerLink='/logout' class="nav-link" href="/login">
+            <i class="fas fa-lg fa-sign-out-alt"></i> Logout </a>
+        </li>
+
+        <li *ngIf='!isLoggedIn()' class="nav-item">
+          <a class="nav-link" routerLink="/login"><i class="fas fa-lg fa-sign-in-alt"></i> Login </a>
+        </li>
+        
       </ul>
     </div>
   </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { AuthService } from 'src/app/model/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService, private route: ActivatedRoute,  private router: Router) { }
+  constructor(private loginService: AuthService, private route: ActivatedRoute,  private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -22,12 +23,15 @@ export class LoginComponent implements OnInit {
   login = () => {
     this.loading = true
     this.error = false
-    this.loginService.authenticateUser(this.username,this.password)
+    const {username,password} = this
+    this.loginService.authenticate({username,password})
     .subscribe((d)=>{
       this.loading = false
       let tmp = JSON.parse(JSON.stringify(d))
+      tmp["message"]=="User is autheticated"
       if(tmp["message"]=="User is autheticated"){
           this.error = false  
+          this.loginService.storeUserData(tmp.token,{username,password})
           this.router.navigate(['/home']);      
       } else {
         this.error = true

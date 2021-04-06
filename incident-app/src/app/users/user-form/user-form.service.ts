@@ -11,6 +11,7 @@ export class UserFormService {
    userBackendURL = 'http://localhost:3000/api/users';
 
     registerUser(username: string, password: string,email: string, type: string) {
-        return this.http.post<string>(this.userBackendURL+"/register", {"username": username , "password": password, "email": email, "type": type});
+        // return this.http.post<string>(this.userBackendURL+"/register", {"username": username , "password": password, "email": email, "type": type});
+        return this.http.post<string>(this.userBackendURL+"/create", {"username": username , "password": password, "email": email, "type": type});
     }
 }
