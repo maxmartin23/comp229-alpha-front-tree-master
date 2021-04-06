@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Incident } from 'src/app/model/incident.model';
 import { IncidentRepository } from 'src/app/model/incident.repository';
 
-
 @Component({
   selector: 'app-incident-list',
   templateUrl: './incident-list.component.html',

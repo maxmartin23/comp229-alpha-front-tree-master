@@ -12,6 +12,14 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
 import { FormsModule } from '@angular/forms';
+import { AuthComponent } from './admin/auth/auth.component';
+import { AuthService } from './model/auth.service';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+
+export function jwtTokenGetter(): string
+{
+  return localStorage.getItem('id_token') || "";
+}
 
 @NgModule({
   declarations: [
@@ -22,15 +30,21 @@ import { FormsModule } from '@angular/forms';
     IncidentFormComponent,
     HomeComponent,
     LoginComponent,
-    UserFormComponent
+    UserFormComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: jwtTokenGetter
+      }
+    })
   ],
-  providers: [],
+  providers: [AuthService,JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

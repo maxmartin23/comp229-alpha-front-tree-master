@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Incident } from './incident.model';
 import { RestDataSource } from './rest.datasource';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class IncidentRepository {
   private incidents: Incident[] = [];
 
