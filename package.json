@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "json": "json-server data.json -p 3000 -m authMiddleware.js"
+    "json": "json-server data.json -p 3000 -m authMiddleware.js",
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
