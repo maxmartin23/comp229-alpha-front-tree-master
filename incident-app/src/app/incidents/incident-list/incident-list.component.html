@@ -1,0 +1,51 @@
+<!--Main Body-->
+<main class="container">
+  <div class="row pb-3">
+    <div class="col-md-offset-1 col">
+      <h1>Incident List</h1>
+    </div>
+
+    <div class="col text-right pt-2">
+      <a href="/incidents/create" class="btn btn-success"
+        ><i class="fas fa-plus-circle"></i> Create New
+      </a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <table class="table table-bordered table-striped table-hover">
+        <thead>
+          <tr class="row m-0">
+            <th class="col text-center">Number</th>
+            <th class="col-3 text-center d-none d-md-block">Description</th>
+            <th class="col text-center">Priority</th>
+            <th class="col text-center">Status</th>
+            <th class="col text-center d-none d-md-block">Create Date</th>
+            <th class="col text-center">Options</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr class="row no-gutters" *ngFor = 'let incident of incidents'>
+            <td class="col text-center">{{incident.number}}</td>
+            <td class="col-3 text-justify px-1 d-none d-md-block">
+              {{incident.description}}
+            </td>
+            <td class="col text-center">{{incident.priority}}</td>
+            <td class="col text-center">{{incident.status}}</td>
+            <td class="col text-center d-none d-md-block">{{incident.createDate}}</td>
+            <td class="col text-center">
+              <a href="#" class="btn btn-secondary">
+                <i class="fas fa-edit"></i>
+              </a>
+              <a href="#" class="btn btn-danger">
+                <i class="far fa-trash-alt"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,78 @@
+<!--Main Body-->
+<main class="container">
+    <div class="row mx-1">
+      <div class="col-12">
+        <h1>User Profile</h1>
+        <br />
+      </div>
+  
+      <div class="form">
+        <form class="row mx-1">
+          <div class="form-group col-12">
+            <label for="username">Username *</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              name="username"
+              [(ngModel)]="username"
+              required
+              placeholder="Type in your username"
+            />
+          </div>
+  
+          <div class="form-group col-12">
+            <label for="password">Password *</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              [(ngModel)]="password"
+              required
+              placeholder="Type in your password"
+            />
+          </div>
+
+          <div class="form-group col-12">
+            <label for="email">Email Address *</label>
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              name="email"
+              [(ngModel)]="email"
+              required
+              placeholder="Type in your email"
+            />
+          </div>
+
+          <div class="form-group col12 col-md-3 pt-1">
+            <label for="status">User Type</label>
+            <select name="status" id="status" [(ngModel)]="type">
+              <option value="regular" selected>Regular</option>
+              <option value="admin" selected>Admin</option>
+            </select>
+          </div>
+  
+          <hr />
+  
+          <div class="form-group col-12 pt-3">
+  
+            <button type="submit" class="btn btn-primary" (click)="register()">
+              <span *ngIf="!loading">
+                <i class="far fa-save"></i> Register
+              </span>
+              <span *ngIf="loading">
+                Registering
+                <div class="spinner-border spinner-border-sm" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+  
